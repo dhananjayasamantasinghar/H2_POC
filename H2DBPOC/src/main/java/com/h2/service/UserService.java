@@ -1,5 +1,7 @@
 package com.h2.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class UserService {
 	
 	public User saveUser(User user){
 		return repo.save(user);
+	}
+	
+	public List<User> getListOfUsers(){
+		return repo.findAll();
 	}
 }

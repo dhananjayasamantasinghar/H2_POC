@@ -43,11 +43,13 @@ public class UserControllerTest {
 		Mockito.when(service.saveUser(user)).thenReturn(user);
 		
 		mockmvc.perform(MockMvcRequestBuilders.post("/user/save")
+				.header("Authorization", "authToken")
 				.contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(user)))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string("Dhananjaya"));
 		
 		mockmvc.perform(MockMvcRequestBuilders.post("/user/save")
+				.header("Authorization", "authToken")
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isBadRequest());
 		
